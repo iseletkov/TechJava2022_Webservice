@@ -1,4 +1,4 @@
-package ru.psu.techjava.studentmarks.techjava2022_lab2.controllers
+package ru.psu.techjava.rating.controllers
 
 import org.hibernate.PropertyValueException
 import org.springframework.http.HttpHeaders

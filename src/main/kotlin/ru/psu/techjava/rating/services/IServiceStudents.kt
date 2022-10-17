@@ -1,7 +1,7 @@
-package ru.psu.techjava.studentmarks.techjava2022_lab2.services
+package ru.psu.techjava.rating.services
 
 import org.springframework.http.ResponseEntity
-import ru.psu.techjava.studentmarks.techjava2022_lab2.model.CStudent
+import ru.psu.techjava.rating.model.CStudent
 import java.util.*
 
 interface IServiceStudents {

@@ -7,11 +7,12 @@ plugins {
 	kotlin("plugin.spring") version "1.6.21"
 }
 
-group = "ru.psu.techjava.studentmarks"
+group = "ru.psu.techjava.rating"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
+
 	mavenCentral()
 }
 
@@ -36,3 +37,4 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+

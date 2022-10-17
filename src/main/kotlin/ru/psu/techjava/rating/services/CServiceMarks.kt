@@ -1,10 +1,9 @@
-package ru.psu.techjava.studentmarks.techjava2022_lab2.services
+package ru.psu.techjava.rating.services
 
-import org.hibernate.PropertyValueException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import ru.psu.techjava.studentmarks.techjava2022_lab2.model.CMark
-import ru.psu.techjava.studentmarks.techjava2022_lab2.repositories.IRepositoryMarks
+import ru.psu.techjava.rating.model.CMark
+import ru.psu.techjava.rating.repositories.IRepositoryMarks
 
 @Service
 class CServiceMarks : IServiceMarks

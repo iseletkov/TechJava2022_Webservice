@@ -1,12 +1,12 @@
-package ru.psu.techjava.studentmarks.techjava2022_lab2.controllers
+package ru.psu.techjava.rating.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.psu.techjava.studentmarks.techjava2022_lab2.model.CMark
-import ru.psu.techjava.studentmarks.techjava2022_lab2.services.IServiceMarks
+import ru.psu.techjava.rating.model.CMark
+import ru.psu.techjava.rating.services.IServiceMarks
 
 @RestController
 @RequestMapping("/marks")

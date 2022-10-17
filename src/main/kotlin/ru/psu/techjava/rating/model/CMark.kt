@@ -1,6 +1,5 @@
-package ru.psu.techjava.studentmarks.techjava2022_lab2.model
+package ru.psu.techjava.rating.model
 
-import com.fasterxml.jackson.annotation.JsonIncludeProperties
 import java.util.*
 import javax.persistence.Column
 import javax.persistence.Entity
