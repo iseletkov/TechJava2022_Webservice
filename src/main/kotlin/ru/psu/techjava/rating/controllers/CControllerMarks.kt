@@ -11,7 +11,7 @@ import ru.psu.techjava.rating.services.IServiceMarks
 @RestController
 @RequestMapping("/marks")
 class CControllerMarks {
-    @Autowired
+
     lateinit var serviceMarks : IServiceMarks
 
     @PostMapping
