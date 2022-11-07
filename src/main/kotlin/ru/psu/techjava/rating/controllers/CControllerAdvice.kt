@@ -1,6 +1,5 @@
 package ru.psu.techjava.rating.controllers
 
-import org.hibernate.PropertyValueException
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -22,7 +21,7 @@ class CControllerAdvice : ResponseEntityExceptionHandler() {
     ): ResponseEntity<Any> {
         val bodyOfResponse = ex!!.message
         return handleExceptionInternal(
-            ex!!, bodyOfResponse,
+            ex, bodyOfResponse,
             HttpHeaders(), HttpStatus.CONFLICT, request!!
         )
     }
