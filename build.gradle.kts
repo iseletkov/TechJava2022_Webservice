@@ -26,7 +26,12 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test"){
+		exclude("junit:junit") //Вырезаем JUnit версии 4, который идёт по-умолчанию
+	}
+	testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.1") //Добавляем 5ю версию тестов.
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
+	testImplementation("com.h2database:h2:2.1.214")
 }
 
 tasks.withType<KotlinCompile> {
