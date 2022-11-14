@@ -27,7 +27,7 @@ interface IServiceStudents {
     )                                       : List<CStudent>
     fun getWithProblems()                   : List<CStudent>
     fun getWithMaxProblems()                : List<CStudent>
-    fun getInfoWithMaxProblems()
+    fun getInfoWithMaxProblems()            : List<IStudentWithCounter>
     /****************************************************************************************************
      * Создание/изменение студента.                                                                     *
      * @param student - данные студента.                                                                *
