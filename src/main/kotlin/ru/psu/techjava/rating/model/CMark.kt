@@ -1,5 +1,6 @@
 package ru.psu.techjava.rating.model
 
+import com.fasterxml.jackson.annotation.JsonIncludeProperties
 import java.util.*
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -21,7 +22,7 @@ data class CMark (
     @Id
     var id: UUID? = null,
     /****************************************************************************************************
-     * Балл.                                                                                            *
+     * Балл %.                                                                                            *
      */
     @Column(name="vll")
     var value : Double = 0.0,
@@ -30,7 +31,7 @@ data class CMark (
      */
     @ManyToOne
     @JoinColumn(name="student_id", nullable = false)
-
+    @JsonIncludeProperties(value = ["id"])
     var student: CStudent? = null
 )
 {

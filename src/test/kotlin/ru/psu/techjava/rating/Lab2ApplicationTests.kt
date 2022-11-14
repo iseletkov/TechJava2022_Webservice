@@ -18,7 +18,7 @@ class Lab2ApplicationTests {
 
     @Test
     fun testMath() {
-        assertEquals(1+4, 3);
+        assertEquals(1+2, 3);
 
     }
     @Test

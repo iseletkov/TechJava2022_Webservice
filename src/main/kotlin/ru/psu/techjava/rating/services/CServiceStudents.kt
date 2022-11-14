@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.web.server.ResponseStatusException
 import ru.psu.techjava.rating.model.CStudent
+import ru.psu.techjava.rating.model.IStudentWithCounter
 import ru.psu.techjava.rating.repositories.IRepositoryStudents
 import java.util.*
 
@@ -24,6 +25,29 @@ class CServiceStudents : IServiceStudents
         return repositoryStudents.findById(id)
             .map { student -> ResponseEntity.ok(student) }
             .orElse(ResponseEntity.notFound().build())
+    }
+    override fun getByName(name: String) : Iterable<CStudent>
+    {
+        return repositoryStudents.findByNameNative(name)
+    }
+    override fun getByMarksValueLessEqual(
+        value                               : Double
+    )                                       : List<CStudent>
+    {
+        return repositoryStudents.findAllByMarksValueLessThanEqual(value)
+    }
+
+    override fun getWithProblems()                   : List<CStudent>
+    {
+        return repositoryStudents.findAllByMarksValueLessThanEqual(50.0)
+    }
+    override fun getWithMaxProblems()                : List<CStudent>
+    {
+        return repositoryStudents.getStudentsWithMaxProblems()
+    }
+    override fun getInfoWithMaxProblems()            : List<IStudentWithCounter>
+    {
+        return repositoryStudents.getInfoWithMaxProblems()
     }
     override fun save(student: CStudent)
     {

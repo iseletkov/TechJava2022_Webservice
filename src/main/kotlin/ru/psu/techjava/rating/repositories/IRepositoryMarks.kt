@@ -7,3 +7,8 @@ import java.util.*
 
 @Repository
 interface IRepositoryMarks : CrudRepository<CMark, UUID>
+{
+    fun findAllByStudentId(
+        id                                  : UUID
+    )                                       : List<CMark>
+}

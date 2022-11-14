@@ -1,22 +1,28 @@
 package ru.psu.techjava.rating.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import ru.psu.techjava.rating.model.CMark
 import ru.psu.techjava.rating.services.IServiceMarks
+import java.util.*
 
 @RestController
 @RequestMapping("/marks")
-class CControllerMarks {
-
-    lateinit var serviceMarks : IServiceMarks
+class CControllerMarks (
+    var serviceMarks                        : IServiceMarks
+)
+{
 
     @PostMapping
     fun save(@RequestBody mark: CMark)
     {
         serviceMarks.save(mark)
+    }
+    @GetMapping(params = ["id"])
+    fun getAllByStudentId(
+        @RequestParam id: UUID
+    )                                       : List<CMark>
+    {
+        return serviceMarks.getAllByStudentId(id)
     }
 }

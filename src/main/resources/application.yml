@@ -3,9 +3,12 @@ spring:
     #url: jdbc:postgresql://localhost:5432/student
     #username: postgres
     #password:
-    url: jdbc:postgresql://mouse.db.elephantsql.com/buqbaoxn
-    username: buqbaoxn
-    password: ofl2aZ5Yo5ydUpu8KIOV94Saw9h55Eo4
+#    url: jdbc:postgresql://mouse.db.elephantsql.com/buqbaoxn
+#    username: buqbaoxn
+#    password: ofl2aZ5Yo5ydUpu8KIOV94Saw9h55Eo4
+    url: jdbc:postgresql://62.16.41.198:50000/techjava
+    username: TechJava
+    password: Qq12345677_
   jpa:
     hibernate:
       ddl-auto: update

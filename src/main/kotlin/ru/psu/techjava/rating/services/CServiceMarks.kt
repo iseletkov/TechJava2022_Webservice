@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import ru.psu.techjava.rating.model.CMark
 import ru.psu.techjava.rating.repositories.IRepositoryMarks
+import java.util.*
 
 @Service
 class CServiceMarks : IServiceMarks
@@ -19,5 +20,11 @@ class CServiceMarks : IServiceMarks
         {
             throw Exception("Не указаны обязательные данные для оценки!", e)
         }
+    }
+    override fun getAllByStudentId(
+        id                                  : UUID
+    )                                       : List<CMark>
+    {
+        return repositoryMarks.findAllByStudentId(id)
     }
 }
