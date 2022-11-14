@@ -1,26 +1,40 @@
 package ru.psu.techjava.rating.services
 
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
-import org.springframework.web.server.ResponseStatusException
 import ru.psu.techjava.rating.model.CStudent
 import ru.psu.techjava.rating.model.IStudentWithCounter
 import ru.psu.techjava.rating.repositories.IRepositoryStudents
 import java.util.*
-
+/********************************************************************************************************
+ * Сервис с бизнес-логикой для работы со списком студентов.                                             *
+ * @author Селетков И.П. 2022 1107.                                                                     *
+ *******************************************************************************************************/
 @Service
-class CServiceStudents : IServiceStudents
+class CServiceStudents
+/********************************************************************************************************
+ * Конструктор.                                                                                         *
+ * @param repositoryStudents - репозиторий с запросами к таблице студентов в СУБД                       *
+ * (устанавливается Spring-ом).                                                                         *
+ *******************************************************************************************************/
+(
+    val repositoryStudents                  : IRepositoryStudents
+)                                           : IServiceStudents
 {
-    @Autowired
-    lateinit var repositoryStudents: IRepositoryStudents
-
-    override fun getAll():Iterable<CStudent>
+    /****************************************************************************************************
+     * Список всех студентов.                                                                           *
+     ***************************************************************************************************/
+    override fun getAll()                   :Iterable<CStudent>
     {
         return repositoryStudents.findAll()
     }
-    override fun getById(id: UUID) : ResponseEntity<CStudent>
+    /****************************************************************************************************
+     * Поиск студента по идентификатору.                                                                *
+     * @param id - идентификатор студента для поиска в формате UUID.                                    *
+     ***************************************************************************************************/
+    override fun getById(
+        id                                  : UUID
+    )                                       : ResponseEntity<CStudent>
     {
         return repositoryStudents.findById(id)
             .map { student -> ResponseEntity.ok(student) }
@@ -49,23 +63,40 @@ class CServiceStudents : IServiceStudents
     {
         return repositoryStudents.getInfoWithMaxProblems()
     }
-    override fun save(student: CStudent)
+
+    /****************************************************************************************************
+     * Создание/изменение студента.                                                                     *
+     * @param student - данные студента.                                                                *
+     ***************************************************************************************************/
+    override fun save(
+        student                             : CStudent
+    )
     {
         repositoryStudents.save(student)
     }
-    override fun delete(student: CStudent)
+    /****************************************************************************************************
+     * Удаление студента.                                                                               *
+     * @param student - данные студента.                                                                *
+     ***************************************************************************************************/
+    override fun delete(
+        student                             : CStudent
+    )
     {
         repositoryStudents.delete(student)
     }
-
-    override fun deleteById(id : UUID)
+    /****************************************************************************************************
+     * Удаление студента по идентификатору.                                                             *
+     * @param id - идентификатор студента для удаления.                                                 *
+     ***************************************************************************************************/
+    override fun deleteById(
+        id                                  : UUID
+    )                                       : String
     {
-        if (repositoryStudents.existsById(id)) {
+        return if (repositoryStudents.existsById(id)) {
             repositoryStudents.deleteById(id)
-            return
+             "Элемент удалён"
         }
-        throw ResponseStatusException(
-            HttpStatus.NOT_FOUND, "entity not found"
-        )
+        else
+            "Элемент не найден"
     }
 }
